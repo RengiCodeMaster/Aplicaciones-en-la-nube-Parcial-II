@@ -1,0 +1,13 @@
+:root { color: #1f2937; font-family: system-ui, sans-serif; background: #f3f4f6; }
+body { margin: 0; }
+.container { box-sizing: border-box; margin: 0 auto; max-width: 900px; padding: 2rem 1rem; }
+section { background: white; border-radius: .75rem; margin-top: 1.5rem; padding: 1rem; }
+form { display: grid; gap: .5rem; max-width: 28rem; }
+input, button { font: inherit; padding: .6rem; }
+button { cursor: pointer; width: fit-content; }
+.cards { display: grid; gap: .75rem; margin-top: 1rem; }
+.card { border: 1px solid #d1d5db; border-radius: .5rem; padding: .75rem; }
+.status { min-height: 1.5rem; }
+.status.error { color: #b91c1c; }
+.status.success { color: #047857; }
+@media (max-width: 600px) { .container { padding: 1rem .75rem; } }

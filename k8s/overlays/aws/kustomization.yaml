@@ -1,0 +1,18 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: microservicios
+resources:
+  - ../../base
+patches:
+  - path: postgres-pvc.yaml
+  - path: mongodb-pvc.yaml
+images:
+  - name: courts-service
+    newName: 901799140785.dkr.ecr.us-east-1.amazonaws.com/courts-service
+    newTag: v1
+  - name: reservations-service
+    newName: 901799140785.dkr.ecr.us-east-1.amazonaws.com/reservations-service
+    newTag: v1
+  - name: frontend
+    newName: 901799140785.dkr.ecr.us-east-1.amazonaws.com/frontend
+    newTag: v1

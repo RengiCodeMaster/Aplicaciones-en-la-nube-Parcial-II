@@ -1,0 +1,85 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-2
+spec:
+  type: ClusterIP
+  selector:
+    app: service-2
+  ports:
+    - port: 8001
+      targetPort: 8001
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-2
+  template:
+    metadata:
+      labels:
+        app: service-2
+    spec:
+      initContainers:
+        - name: mongodb-ready
+          image: mongo:8
+          envFrom:
+            - secretRef:
+                name: microservicios-secrets
+          command: ["sh", "-c"]
+          args:
+            - >-
+              until mongosh --host mongodb --quiet --username "$MONGO_INITDB_ROOT_USERNAME"
+              --password "$MONGO_INITDB_ROOT_PASSWORD" --authenticationDatabase admin
+              --eval 'db.runCommand({ ping: 1 }).ok'; do sleep 3; done
+      containers:
+        - name: service-2
+          image: reservations-service:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8001
+          env:
+            - name: MONGODB_URI
+              valueFrom:
+                secretKeyRef:
+                  name: microservicios-secrets
+                  key: MONGODB_URI
+            - name: SERVICE_1_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: microservicios-config
+                  key: SERVICE_1_URL
+            - name: SERVICE_TIMEOUT_MS
+              valueFrom:
+                configMapKeyRef:
+                  name: microservicios-config
+                  key: SERVICE_TIMEOUT_MS
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /health
+              port: 8001
+            failureThreshold: 30
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi

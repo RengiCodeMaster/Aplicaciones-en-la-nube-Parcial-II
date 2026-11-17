@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Reservas de canchas</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <main class="container">
+      <h1>Reservas de canchas</h1>
+      <p>Consulta horarios y registra tu reserva.</p>
+      <section aria-labelledby="courts-title">
+        <h2 id="courts-title">Canchas disponibles</h2>
+        <button id="load-courts" type="button">Cargar canchas</button>
+        <p id="courts-status" class="status" aria-live="polite"></p>
+        <div id="courts-list" class="cards"></div>
+      </section>
+      <section aria-labelledby="user-title">
+        <h2 id="user-title">Datos del usuario</h2>
+        <form id="user-form">
+          <label for="user-name">Nombre</label>
+          <input id="user-name" name="name" required minlength="2">
+          <label for="user-email">Correo</label>
+          <input id="user-email" name="email" type="email" required>
+          <button type="submit">Crear usuario</button>
+        </form>
+        <p id="user-status" class="status" aria-live="polite"></p>
+      </section>
+      <section aria-labelledby="reservation-title">
+        <h2 id="reservation-title">Nueva reserva</h2>
+        <form id="reservation-form">
+          <label for="court-id">ID de cancha</label>
+          <input id="court-id" name="courtId" required>
+          <label for="schedule-id">ID de horario</label>
+          <input id="schedule-id" name="scheduleId" required>
+          <button type="submit">Reservar horario</button>
+        </form>
+        <p id="reservation-status" class="status" aria-live="polite"></p>
+      </section>
+    </main>
+    <script src="config.runtime.example.js"></script>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

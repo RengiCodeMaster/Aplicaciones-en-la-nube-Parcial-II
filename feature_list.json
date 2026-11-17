@@ -1,0 +1,18 @@
+{
+  "project": "microservicios-aws-k8s",
+  "rules": {
+    "one_feature_at_a_time": true,
+    "require_approved_spec_to_implement": true,
+    "require_tests_to_close": true,
+    "valid_status": ["pending", "spec_ready", "in_progress", "done", "blocked"]
+  },
+  "features": [
+    {"id": 1, "name": "service_1_setup", "owner": "persona-1", "title": "Configuración del servicio 1", "description": "Crear el primer microservicio con su lenguaje, API, pruebas y base de datos independiente.", "acceptance": ["El servicio inicia correctamente.", "Tiene API documentada.", "Se conecta únicamente a su propia base de datos.", "Tiene pruebas automatizadas."], "sdd": true, "status": "done"},
+    {"id": 2, "name": "service_2_setup", "owner": "persona-1", "title": "Configuración del servicio 2", "description": "Crear el segundo microservicio en otro lenguaje con su API, pruebas y base de datos independiente.", "acceptance": ["El servicio inicia correctamente.", "Usa un lenguaje diferente al servicio 1.", "Se conecta únicamente a su propia base de datos.", "Tiene pruebas automatizadas."], "sdd": true, "status": "done"},
+    {"id": 3, "name": "service_contracts", "owner": "persona-1", "title": "Contratos entre servicios", "description": "Definir y validar la comunicación entre los dos microservicios.", "acceptance": ["Los contratos están documentados.", "El frontend puede consultar ambos servicios.", "Los errores y timeouts tienen manejo definido.", "Existen pruebas de integración."], "sdd": true, "status": "done"},
+    {"id": 4, "name": "frontend", "owner": "persona-1", "title": "Frontend consumidor", "description": "Crear el frontend que consuma las APIs de ambos servicios.", "acceptance": ["El frontend configura las URLs por variables de entorno.", "Consulta ambos servicios.", "Muestra estados de carga y error.", "Tiene pruebas básicas."], "sdd": true, "status": "done"},
+    {"id": 5, "name": "containerization", "owner": "persona-1", "title": "Contenedores Docker", "description": "Empaquetar servicios, frontend y bases de datos para ejecución reproducible.", "acceptance": ["Cada componente tiene imagen reproducible.", "No hay secretos en las imágenes.", "Existe ejecución local documentada."], "sdd": true, "status": "done"},
+    {"id": 6, "name": "kubernetes", "owner": "persona-1", "title": "Despliegue en Kubernetes", "description": "Crear manifests para ejecutar el sistema completo en Kubernetes.", "acceptance": ["Existen Deployments y Services.", "La configuración usa Secrets y ConfigMaps.", "Existen health checks y recursos básicos.", "El sistema puede comunicarse dentro del clúster."], "sdd": true, "status": "done"},
+    {"id": 7, "name": "aws_deployment", "owner": "persona-1", "title": "Despliegue en AWS", "description": "Publicar el sistema en AWS usando Kubernetes y validar su funcionamiento.", "acceptance": ["El clúster está documentado.", "El despliegue es reproducible.", "El frontend responde públicamente.", "Se documentan logs y rollback."], "sdd": true, "status": "in_progress"}
+  ]
+}
