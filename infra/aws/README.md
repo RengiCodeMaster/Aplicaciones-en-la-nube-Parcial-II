@@ -39,3 +39,7 @@ kubectl -n microservicios logs deployment/service-2
 kubectl -n microservicios rollout history deployment/frontend
 kubectl -n microservicios rollout undo deployment/frontend
 ```
+
+## GitHub Actions
+
+El workflow `.github/workflows/deploy-aws.yml` ejecuta pruebas, construye las imágenes, las publica en ECR y despliega en EKS usando OIDC. Deben configurarse en GitHub los secretos `AWS_ROLE_ARN`, `POSTGRES_PASSWORD` y `MONGO_PASSWORD`. No se deben guardar `AWS_ACCESS_KEY_ID` ni `AWS_SECRET_ACCESS_KEY` en GitHub.
