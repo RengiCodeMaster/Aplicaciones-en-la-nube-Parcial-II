@@ -12,6 +12,7 @@ permissions:
 env:
   AWS_REGION: us-east-1
   EKS_CLUSTER: hola-mundo-demo
+  AWS_ROLE_ARN: arn:aws:iam::901799140785:role/microservicios-github-actions-role
   ECR_REGISTRY: 901799140785.dkr.ecr.us-east-1.amazonaws.com
   IMAGE_TAG: ${{ github.sha }}
 
@@ -49,7 +50,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: ${{ env.AWS_REGION }}
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          role-to-assume: ${{ env.AWS_ROLE_ARN }}
           role-session-name: github-actions-deploy
 
       - name: Ensure ECR repositories exist
