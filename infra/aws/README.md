@@ -1,11 +1,11 @@
 # Operación AWS
 
-El clúster usado para esta validación es `hola-mundo-demo` en `us-east-1`. La configuración reproducible para crear un clúster nuevo está en `cluster.yaml`; no se debe aplicar si ya existe un clúster disponible.
+El clúster usado para esta validación es `parcial2-eks` en `us-east-1`. La configuración reproducible para crear un clúster nuevo está en `cluster.yaml`; no se debe aplicar si ya existe un clúster disponible.
 
 ## Conexión
 
 ```powershell
-aws eks update-kubeconfig --region us-east-1 --name hola-mundo-demo
+aws eks update-kubeconfig --region us-east-1 --name parcial2-eks
 kubectl get nodes
 ```
 
