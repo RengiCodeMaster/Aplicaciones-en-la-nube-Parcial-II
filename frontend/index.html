@@ -3,43 +3,40 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Reservas de canchas</title>
+    <meta name="description" content="Reserva tu cancha deportiva de forma rápida y sencilla.">
+    <title>CanchaYa | Reserva tu cancha</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <main class="container">
-      <h1>Reservas de canchas</h1>
-      <p>Consulta horarios y registra tu reserva.</p>
-      <section aria-labelledby="courts-title">
-        <h2 id="courts-title">Canchas disponibles</h2>
-        <button id="load-courts" type="button">Cargar canchas</button>
-        <p id="courts-status" class="status" aria-live="polite"></p>
-        <div id="courts-list" class="cards"></div>
+    <header class="site-header">
+      <div class="container header-content">
+        <a class="brand" href="/" aria-label="CanchaYa, inicio"><span class="brand-mark" aria-hidden="true">⚽</span><span>CanchaYa</span></a>
+        <span class="header-location">Tingo María · Reserva en minutos</span>
+      </div>
+    </header>
+    <main class="container page-content">
+      <section class="hero" aria-labelledby="page-title">
+        <div><p class="eyebrow">TU PARTIDO EMPIEZA AQUÍ</p><h1 id="page-title">Reserva tu cancha sin complicaciones.</h1><p class="hero-copy">Elige dónde jugar, selecciona un horario y asegura tu partido.</p></div>
+        <div class="hero-ball" aria-hidden="true">⚽</div>
       </section>
-      <section aria-labelledby="user-title">
-        <h2 id="user-title">Datos del usuario</h2>
-        <form id="user-form">
-          <label for="user-name">Nombre</label>
-          <input id="user-name" name="name" required minlength="2">
-          <label for="user-email">Correo</label>
-          <input id="user-email" name="email" type="email" required>
-          <button type="submit">Crear usuario</button>
-        </form>
-        <p id="user-status" class="status" aria-live="polite"></p>
+      <nav class="steps" aria-label="Pasos de la reserva"><span class="step active" data-step="1"><b>1</b> Elige cancha</span><span class="step" data-step="2"><b>2</b> Elige horario</span><span class="step" data-step="3"><b>3</b> Completa tus datos</span></nav>
+      <section class="panel" aria-labelledby="courts-title">
+        <div class="section-heading"><div><p class="eyebrow">PASO 1</p><h2 id="courts-title">¿Dónde quieres jugar?</h2></div><button id="load-courts" class="button button-secondary" type="button">Actualizar</button></div>
+        <p id="courts-status" class="status" aria-live="polite">Buscando canchas disponibles...</p><div id="courts-list" class="cards" aria-live="polite"></div>
+        <div id="courts-empty" class="empty-state" hidden><span class="empty-icon" aria-hidden="true">🏟️</span><strong>No encontramos canchas disponibles</strong><span>Intenta actualizar en unos segundos.</span></div>
       </section>
-      <section aria-labelledby="reservation-title">
-        <h2 id="reservation-title">Nueva reserva</h2>
-        <form id="reservation-form">
-          <label for="court-id">ID de cancha</label>
-          <input id="court-id" name="courtId" required>
-          <label for="schedule-id">ID de horario</label>
-          <input id="schedule-id" name="scheduleId" required>
-          <button type="submit">Reservar horario</button>
-        </form>
+      <section class="panel" aria-labelledby="schedules-title">
+        <div class="section-heading"><div><p class="eyebrow">PASO 2</p><h2 id="schedules-title">Elige un horario</h2></div></div>
+        <p id="selected-court" class="selection-hint">Selecciona una cancha para ver sus horarios.</p><div id="schedules-list" class="schedule-grid" aria-live="polite"></div><p id="schedules-status" class="status" aria-live="polite"></p>
+      </section>
+      <section class="panel" aria-labelledby="reservation-title">
+        <div class="section-heading"><div><p class="eyebrow">PASO 3</p><h2 id="reservation-title">Confirma tu reserva</h2></div></div>
+        <div class="summary" aria-live="polite"><span class="summary-label">Tu selección</span><strong id="reservation-summary">Elige una cancha y un horario para continuar.</strong></div>
+        <form id="reservation-form" class="reservation-form"><div class="form-field"><label for="user-name">Tu nombre</label><input id="user-name" name="name" autocomplete="name" required minlength="2" placeholder="Ej. Juan Pérez"></div><div class="form-field"><label for="user-email">Tu correo</label><input id="user-email" name="email" type="email" autocomplete="email" required placeholder="ejemplo@correo.com"></div><button id="reserve-button" class="button button-primary" type="submit" disabled>Confirmar reserva</button></form>
         <p id="reservation-status" class="status" aria-live="polite"></p>
       </section>
     </main>
-    <script src="config.runtime.example.js"></script>
-    <script type="module" src="app.js"></script>
+    <footer class="site-footer">CanchaYa · Juega más, organiza menos.</footer>
+    <script src="config.runtime.example.js"></script><script type="module" src="app.js"></script>
   </body>
 </html>
