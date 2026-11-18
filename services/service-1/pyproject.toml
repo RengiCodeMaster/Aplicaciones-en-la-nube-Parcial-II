@@ -11,6 +11,14 @@ dependencies = [
   "alembic>=1.14,<2.0"
 ]
 
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+exclude = ["tests*", "alembic*"]
+
 [project.optional-dependencies]
 dev = ["httpx>=0.28,<1.0", "pytest>=8.3,<9.0", "ruff>=0.8,<1.0", "mypy>=1.13,<2.0"]
 
