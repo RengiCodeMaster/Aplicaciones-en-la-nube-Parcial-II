@@ -8,4 +8,8 @@ Se añadió proxy Nginx en el frontend para consumir los Services internos sin e
 
 Validación completada: manifests renderizados, Docker Compose saludable, clúster Docker Desktop operativo y flujo de reserva confirmado dentro de Kubernetes.
 
-La spec de `aws_deployment` fue aprobada y está en implementación.
+La spec de `aws_deployment` fue revisada para alinearse con el flujo CI/CD de la guía del compañero y está pendiente de aprobación humana.
+
+El workflow queda preparado para GitHub Actions; el despliegue no debe ejecutarse desde una carpeta local.
+
+El intento anterior de AWS fue limpiado. El nuevo flujo usará nombres y recursos propios del proyecto.

@@ -1,32 +1,37 @@
-# Requisitos: despliegue en AWS
+# Requisitos: despliegue automático en AWS
 
 ## Objetivo
 
-Publicar el sistema validado en Kubernetes dentro de Amazon EKS y permitir el acceso público al frontend.
+Publicar el sistema validado en Kubernetes dentro de Amazon EKS y actualizar AWS automáticamente después de cada `push` a `main`.
 
 ## Requisitos funcionales
 
-### R1. Clúster documentado
+### R1. Clúster EKS documentado
 
-Debe existir una configuración reproducible del clúster EKS, región, nombre y nodos requeridos. El acceso debe poder configurarse con `aws eks update-kubeconfig`.
+Debe existir una configuración reproducible del clúster EKS `parcial2-eks` en `us-east-1`, con su node group y comandos de conexión mediante el perfil `eks-admin`.
 
-### R2. Imágenes publicadas
+### R2. Acceso OIDC
+
+GitHub Actions debe autenticarse mediante OIDC y un rol IAM propio de este repositorio. El pipeline no debe usar Access Keys guardadas en GitHub.
+
+### R3. Imágenes publicadas
 
 Las imágenes de Service 1, Service 2 y frontend deben construirse y publicarse en ECR. Los manifests de AWS deben usar referencias completas a ECR y etiquetas identificables.
 
-### R3. Despliegue reproducible
+### R4. Pipeline CI/CD
 
-Debe existir un overlay o configuración de Kubernetes para AWS que reutilice los manifests funcionales y ajuste imágenes, almacenamiento y configuración necesaria para EKS.
+Después de un `push` a `main`, GitHub Actions debe ejecutar pruebas, construir imágenes, publicarlas en ECR y aplicar el overlay AWS mediante `kubectl`.
 
-### R4. Acceso público y operación
+### R5. Acceso público y operación
 
 El frontend debe exponerse mediante un Service `LoadBalancer` y responder públicamente. Deben documentarse comandos para revisar Pods, Services, eventos, logs y rollback.
 
 ## Criterios de aceptación
 
 - El clúster EKS está documentado y accesible.
+- El rol OIDC tiene Access Entry y permisos para desplegar en EKS.
 - Las imágenes se encuentran en ECR.
-- El despliegue se puede repetir con los archivos y comandos documentados.
+- Un `push` a `main` inicia el despliegue reproducible.
 - El frontend responde desde la dirección pública del LoadBalancer.
 - El flujo de cancha, horario, usuario y reserva funciona en AWS.
 - Se puede consultar el estado, logs y volver a una revisión anterior.
