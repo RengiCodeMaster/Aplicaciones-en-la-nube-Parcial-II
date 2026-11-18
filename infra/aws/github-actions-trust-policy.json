@@ -12,7 +12,7 @@
           "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
         },
         "StringLike": {
-          "token.actions.githubusercontent.com:sub": "repo:RengiCodeMaster/Aplicaciones-en-la-nube-Parcial-II:ref:refs/heads/main"
+          "token.actions.githubusercontent.com:sub": "repo:RengiCodeMaster@156978889/Aplicaciones-en-la-nube-Parcial-II@1462047870:ref:refs/heads/main"
         }
       }
     }
