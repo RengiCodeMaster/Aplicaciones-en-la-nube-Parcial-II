@@ -1,0 +1,40 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "EcrLogin",
+      "Effect": "Allow",
+      "Action": ["ecr:GetAuthorizationToken"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "EcrCreateRepositories",
+      "Effect": "Allow",
+      "Action": ["ecr:CreateRepository"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "EcrRepositories",
+      "Effect": "Allow",
+      "Action": [
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:CompleteLayerUpload",
+        "ecr:DescribeRepositories",
+        "ecr:InitiateLayerUpload",
+        "ecr:PutImage",
+        "ecr:UploadLayerPart"
+      ],
+      "Resource": [
+        "arn:aws:ecr:us-east-1:901799140785:repository/courts-service",
+        "arn:aws:ecr:us-east-1:901799140785:repository/reservations-service",
+        "arn:aws:ecr:us-east-1:901799140785:repository/frontend"
+      ]
+    },
+    {
+      "Sid": "DescribeEks",
+      "Effect": "Allow",
+      "Action": ["eks:DescribeCluster"],
+      "Resource": "arn:aws:eks:us-east-1:901799140785:cluster/parcial2-eks"
+    }
+  ]
+}

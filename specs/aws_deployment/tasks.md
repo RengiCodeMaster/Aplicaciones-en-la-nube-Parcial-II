@@ -1,7 +1,7 @@
 # Tareas: CI/CD y despliegue en AWS
 
-- [ ] T1. Confirmar el clúster `parcial2-eks`, región `us-east-1`, node group y conexión con el perfil `eks-admin`.
-- [ ] T2. Crear el rol IAM OIDC propio del repositorio y registrarlo mediante Access Entry en EKS.
+- [x] T1. Confirmar el clúster `parcial2-eks`, región `us-east-1`, node group y conexión con el perfil `eks-admin`.
+- [x] T2. Crear el rol IAM OIDC propio del repositorio y registrarlo mediante Access Entry en EKS.
 - [ ] T3. Crear los repositorios ECR propios del proyecto.
 - [ ] T4. Configurar Secrets de GitHub y permisos OIDC sin subir credenciales al repositorio.
 - [ ] T5. Validar el workflow: pruebas, build y push de imágenes con la SHA del commit.

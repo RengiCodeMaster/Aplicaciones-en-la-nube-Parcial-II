@@ -12,4 +12,4 @@ La spec de `aws_deployment` fue revisada para alinearse con el flujo CI/CD de la
 
 El workflow queda preparado para GitHub Actions; el despliegue no debe ejecutarse desde una carpeta local.
 
-El intento anterior de AWS fue limpiado. El nuevo flujo usará nombres y recursos propios del proyecto.
+El intento anterior de AWS fue limpiado. El nuevo flujo usa `parcial2-eks`, el rol OIDC propio y el driver EBS CSI del proyecto.
