@@ -94,7 +94,7 @@ jobs:
       - name: Deploy Kubernetes manifests
         run: |
           kubectl apply -k k8s/overlays/aws
-          kubectl -n microservicios set image deployment/service-1 service-1="$ECR_REGISTRY/courts-service:$IMAGE_TAG"
+          kubectl -n microservicios set image deployment/service-1 service-1="$ECR_REGISTRY/courts-service:$IMAGE_TAG" database-migration="$ECR_REGISTRY/courts-service:$IMAGE_TAG"
           kubectl -n microservicios set image deployment/service-2 service-2="$ECR_REGISTRY/reservations-service:$IMAGE_TAG"
           kubectl -n microservicios set image deployment/frontend frontend="$ECR_REGISTRY/frontend:$IMAGE_TAG"
 
